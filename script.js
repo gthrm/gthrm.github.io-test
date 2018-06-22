@@ -9,7 +9,7 @@ for (
       $("body").append("<div class='circle' data-x='"+x+"' data-y='"+y+"' style='top:"+y+"px;left:"+x+"px'></div>");
     }
   }
-      $(window).on("mousemove", function(document) {
+      $(window).on("touchmove", function(document) {
         $(".circle").each(function(i){
           let x0 =+ $(".circle:eq("+i+")").data("x")+$(".circle:eq("+i+")").width()/2;
           let y0 =+ $(".circle:eq("+i+")").data("y")+$(".circle:eq("+i+")").width()/2;
