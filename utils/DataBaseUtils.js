@@ -10,16 +10,17 @@ export function setUpConnection() {
     mongoose.connect(`mongodb://${config.db.username}:${config.db.pass}@${config.db.host}:${config.db.port}/${config.db.name}`);
 }
 
-export function listNotes(id) {
+export function listNotes() {
     return Img.find();
 }
 
-export function createNote(data) {
+export function createNote(data, length) {
     const img = new Img({
-        number: ,
+        number: length,
         title: data.title,
         url: data.url,
         createdAt: new Date()
     });
     return img.save();
+    
 }

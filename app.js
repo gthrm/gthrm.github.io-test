@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 
-import { serverPort } from '../config.json';
+import { serverPort } from './config.json';
 
 import * as db from './utils/DataBaseUtils';
 
@@ -19,7 +19,8 @@ app.get('/imges', (req, res) => {
 });
 
 app.post('/imges', (req, res) => {
-    db.createNote(req.body).then(data => res.send(data));
+    db.listNotes().then(data => db.createNote(req.body, data.length).then(data => res.send(data)));
+    ;
 });
 
 const server = app.listen(serverPort, function() {
