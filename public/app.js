@@ -30,19 +30,16 @@ app.use(_bodyParser2.default.json());
 
 app.use((0, _cors2.default)({ origin: '*' }));
 
-app.get('/imges', function (req, res) {
-    db.listNotes().then(function (data) {
+app.get('/users', function (req, res) {
+    db.listUsers().then(function (data) {
         return res.send(data);
     });
 });
 
-app.post('/imges', function (req, res) {
-    db.listNotes().then(function (data) {
-        return db.createNote(req.body, data.length).then(function (data) {
-            return res.send(data);
-        });
+app.post('/user', function (req, res) {
+    db.createUser(req.body).then(function (data) {
+        return res.send(data);
     });
-    ;
 });
 
 var server = app.listen(_config.serverPort, function () {

@@ -14,13 +14,12 @@ app.use( bodyParser.json() );
 
 app.use(cors({ origin: '*' }));
 
-app.get('/imges', (req, res) => {
-    db.listNotes().then(data => res.send(data));
+app.get('/users', (req, res) => {
+    db.listUsers().then(data => res.send(data));
 });
 
-app.post('/imges', (req, res) => {
-    db.listNotes().then(data => db.createNote(req.body, data.length).then(data => res.send(data)));
-    ;
+app.post('/user', (req, res) => {
+   db.createUser(req.body).then(data => res.send(data));
 });
 
 const server = app.listen(serverPort, function() {
