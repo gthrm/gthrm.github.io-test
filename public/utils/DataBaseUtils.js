@@ -19,16 +19,13 @@ var _config = require('../../config.json');
 
 var _config2 = _interopRequireDefault(_config);
 
-var _body = require('./body.js');
-
-var _body2 = _interopRequireDefault(_body);
-
 require('../models/Model');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var password = _config2.default.passMail;
 var User = _mongoose2.default.model('User');
+var linkForData = ''; //ссылка для отправки
 var now = new Date();
 
 function setUpConnection() {
@@ -67,7 +64,7 @@ function sendClientData(data) {
         from: 'andywiller@rambler.ru',
         to: data.email,
         subject: 'Информация по смк для ' + data.name + ' ' + data.secondName,
-        html: '<h1>\u041F\u0440\u0438\u0432\u0435\u0442, ' + data.name + ' ' + data.secondName + '!</h1><p>\u042D\u0442\u043E <a href="https://yadi.sk/i/dbhOXQ-XvVntRw">\u0441\u0441\u044B\u043B\u043A\u0430</a> \u043D\u0430 \u043C\u0430\u0442\u0435\u0440\u0438\u0430\u043B\u044B.</p><p>\u0421 \u0423\u0432\u0430\u0436\u0435\u043D\u0438\u0435\u043C,</p><p>\u0420\u043E\u043C\u0430\u043D \u041C\u0435\u0449\u0435\u0440\u044F\u043A\u043E\u0432</p>'
+        html: '<h1>\u041F\u0440\u0438\u0432\u0435\u0442, ' + data.name + ' ' + data.secondName + '!</h1><p>\u042D\u0442\u043E <a href="' + linkForData + '">\u0441\u0441\u044B\u043B\u043A\u0430</a> \u043D\u0430 \u043C\u0430\u0442\u0435\u0440\u0438\u0430\u043B\u044B.</p><p>\u0421 \u0423\u0432\u0430\u0436\u0435\u043D\u0438\u0435\u043C,</p><p>\u0420\u043E\u043C\u0430\u043D \u041C\u0435\u0449\u0435\u0440\u044F\u043A\u043E\u0432</p>'
     };
 
     transporter.sendMail(mailOption, function (err, info) {

@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 import nodemailer from 'nodemailer';
 import config from '../../config.json';
-import html from './body.js';
 import '../models/Model';
 
 const password = config.passMail;
