@@ -5,6 +5,14 @@ import bodyParser from 'body-parser';
 import { serverPort } from '../config.json';
 
 import * as db from './utils/DataBaseUtils';
+import fs from 'fs';
+import https from 'https';
+import path from 'path';
+
+const options = {
+    key: fs.readFileSync(path.join(__dirname, 'ssl', 'private.key')),
+    cert: fs.readFileSync(path.join(__dirname, 'ssl', 'certificate.crt')),
+}
 
 const app = express();
 
@@ -22,6 +30,6 @@ app.post('/user', (req, res) => {
    db.createUser(req.body).then(data => res.send(data));
 });
 
-const server = app.listen(serverPort, function() {
-    console.log(`Server is up and running on port ${serverPort}`);
+const server = https.createServer(options, app).listen(serverPort, function () {
+    console.log(`Express server listening on port ${serverPort}`);
 });

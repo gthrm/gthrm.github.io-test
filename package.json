@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "start": "nodemon public/app.js",
     "build": "babel src -d public --preset es2015",
     "watch": "babel src -d public --preset es2015 -w",
     "webpack": "webpack"
