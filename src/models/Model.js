@@ -2,14 +2,10 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
-const UserSchema = new Schema({
-    name        : { type: String },
-    secondName  : { type: String },
-    email       : { type: String },
-    tel         : { type: String, required: true },
-    org         : { type: String },
-    createdAt   : { type: Date }
+const ImgSchema = new Schema({
+    title    : { type: String },
+    url      : { type: String, required: true },
+    createdAt: {type: Date}
 });
 
-mongoose.model('User', UserSchema);
-
+mongoose.model('Img', ImgSchema);

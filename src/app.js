@@ -13,7 +13,6 @@ const options = {
     key: fs.readFileSync(path.join(__dirname, 'ssl', 'private.key')),
     cert: fs.readFileSync(path.join(__dirname, 'ssl', 'certificate.crt')),
 }
-
 const app = express();
 
 db.setUpConnection();
@@ -22,12 +21,12 @@ app.use( bodyParser.json() );
 
 app.use(cors({ origin: '*' }));
 
-app.get('/users', (req, res) => {
-    db.listUsers().then(data => res.send(data));
+app.get('/imges', (req, res) => {
+    db.listNotes().then(data => res.send(data));
 });
 
-app.post('/user', (req, res) => {
-   db.createUser(req.body).then(data => res.send(data));
+app.post('/imges', (req, res) => {
+    db.createNote(req.body).then(data => res.send(data));
 });
 
 const server = https.createServer(options, app).listen(serverPort, function () {

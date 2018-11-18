@@ -38,7 +38,6 @@ var options = {
     key: _fs2.default.readFileSync(_path2.default.join(__dirname, 'ssl', 'private.key')),
     cert: _fs2.default.readFileSync(_path2.default.join(__dirname, 'ssl', 'certificate.crt'))
 };
-
 var app = (0, _express2.default)();
 
 db.setUpConnection();
@@ -47,14 +46,14 @@ app.use(_bodyParser2.default.json());
 
 app.use((0, _cors2.default)({ origin: '*' }));
 
-app.get('/users', function (req, res) {
-    db.listUsers().then(function (data) {
+app.get('/imges', function (req, res) {
+    db.listNotes().then(function (data) {
         return res.send(data);
     });
 });
 
-app.post('/user', function (req, res) {
-    db.createUser(req.body).then(function (data) {
+app.post('/imges', function (req, res) {
+    db.createNote(req.body).then(function (data) {
         return res.send(data);
     });
 });

@@ -8,13 +8,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Schema = _mongoose2.default.Schema;
 
-var UserSchema = new Schema({
-    name: { type: String },
-    secondName: { type: String },
-    email: { type: String },
-    tel: { type: String, required: true },
-    org: { type: String },
+var ImgSchema = new Schema({
+    title: { type: String },
+    url: { type: String, required: true },
     createdAt: { type: Date }
 });
 
-_mongoose2.default.model('User', UserSchema);
+_mongoose2.default.model('Img', ImgSchema);
